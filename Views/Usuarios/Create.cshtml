@@ -1,0 +1,179 @@
+﻿@model Vendedor.Models.Usuario
+
+@{
+    ViewBag.Title = "Incluir";
+}
+
+<h2>Incluir</h2>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Usuario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.Nome, "Nome", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DadoPessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.CPF, "CPF", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DadoPessoaFisica.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.CPF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.DataNascimento, "Data de Nascimento", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DadoPessoaFisica.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.DadoPessoaFisica.Endereco.Logradouro, "Logradouro", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DadoPessoaFisica.Endereco.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DadoPessoaFisica.Endereco.Logradouro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.Endereco.Numero, "Numero", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DadoPessoaFisica.Endereco.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.Endereco.Numero, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.Endereco.Complemento, "Complemento", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DadoPessoaFisica.Endereco.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.Endereco.Complemento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.Endereco.Bairro, "Bairro", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DadoPessoaFisica.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.Endereco.Bairro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.Endereco.UF, "UF", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DadoPessoaFisica.Endereco.UF.EstadoID, (SelectList)ViewBag.EstadoID, "SELECIONE", htmlAttributes: new { @class = "form-control", id = string.Format("DadosPF_EstadoID"), Name = "DadosPF_EstadoID" })
+                @*@Html.DropDownList("DadosPF_EstadoID", (SelectList)ViewBag.EstadoID, "SELECIONE", htmlAttributes: new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.Endereco.UF.EstadoID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DadoPessoaFisica.Endereco.Cidade.Nome, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">                
+                @Html.DropDownListFor(model => model.DadoPessoaFisica.Endereco.Cidade.Nome, (SelectList)ViewBag.CidadeID, "SELECIONE", htmlAttributes: new { @class = "form-control" })           
+                @Html.ValidationMessageFor(model => model.DadoPessoaFisica.Endereco.MunicipioID, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar à Lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")    
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+    <script type="text/javascript">
+        $(function () {
+            $.validator.methods.date = function (value, element) {
+                Globalize.culture("en-GB");
+                return this.optional(element) || Globalize.parseDate(value) !== null;
+            }
+        });
+        $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+            var verificationToken = $("meta[name='__RequestVerificationToken']").attr('content');
+            if (verificationToken) {
+                jqXHR.setRequestHeader("X-Request-Verification-Token", verificationToken);
+            }
+        });
+        $(document).ready(function () {
+            $("#DadosPF_EstadoID").change(function () {
+                // Evento change dropdown estado
+
+                //AddAntiForgeryToken = function (data) {
+                //    data.__RequestVerificationToken = $('#__AjaxAntiForgeryForm input[name=__RequestVerificationToken]').val();
+                //    return data;
+                //};
+                var estadoID = parseInt($("#DadosPF_EstadoID").val());
+                var token = $('[name=__RequestVerificationToken]').val();
+                if (!isNaN(estadoID)) {
+                    var Cidades = $("#DadoPessoaFisica_Endereco_Cidade_Nome");
+                    Cidades.empty(); // Limpa conteudo de DropDown Cidades
+                    Cidades.append($("<option></option>").val("").html("Selecione a Cidade"));
+
+
+                    $.ajax({
+                        url: '@Url.Action("GetCities", "Usuarios")',
+                        type: 'POST',                        
+                        data: { __RequestVerificationToken: token, EstadoID: JSON.stringify(estadoID) },
+                        context: document.body,
+                        datatype: 'json',                        
+                        sucess: function (data) {
+                            $.each(data, function (i, val) {
+                                Cidades.append($("<option></option>").val(val.CidadeID).html(val.Nome));
+                            });
+                        },
+                        error: function(){
+                            alert("Erro!");
+                        }
+                    });
+
+                }
+            });
+        });
+    </script>
+}

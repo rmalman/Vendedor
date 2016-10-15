@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Vendedor1ModelStoreContainer" CdmEntityContainer="Vendedor1Entities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="Vendedor1Model.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DadosPessoaFisica">
+      <EntityTypeMapping TypeName="Vendedor1Model.DadosPessoaFisica">
+        <MappingFragment StoreEntitySet="DadosPessoaFisica">
+          <ScalarProperty Name="DadosPessoaFisicaID" ColumnName="DadosPessoaFisicaID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="Vendedor1Model.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="SiglaUF" ColumnName="SiglaUF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Municipio">
+      <EntityTypeMapping TypeName="Vendedor1Model.Municipio">
+        <MappingFragment StoreEntitySet="Municipio">
+          <ScalarProperty Name="MunicipioID" ColumnName="MunicipioID" />
+          <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="Vendedor1Model.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DadosPessoaFisicaID" ColumnName="DadosPessoaFisicaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

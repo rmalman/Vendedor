@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Vendedor.Models.Municipio>
+
+@{
+    ViewBag.Title = "Lista de Municipios";
+}
+
+<h2>Indice</h2>
+
+<p>
+    @Html.ActionLink("Criar um Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Nome)*@
+            @Html.ActionLink("Estado", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.UF.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UF.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "Edit", new { id = item.MunicipioID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.MunicipioID }) |
+            @Html.ActionLink("Apagar", "Delete", new { id = item.MunicipioID })
+        </td>
+    </tr>
+}
+
+</table>

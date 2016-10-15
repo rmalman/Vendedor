@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Vendedor.Models.Estado>
+
+@{
+    ViewBag.Title = "Lista de Estados";
+}
+
+<h2>Índice</h2>
+
+<p>
+    @Html.ActionLink("Criar um Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Nome)*@
+            @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiglaUF)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiglaUF)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "Edit", new { id=item.EstadoID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.EstadoID }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.EstadoID })
+        </td>
+    </tr>
+}
+
+</table>

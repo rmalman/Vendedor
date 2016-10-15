@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Vendedor.Models.Usuario>
+
+@{
+    ViewBag.Title = "Índice";
+}
+
+<h2>Índice</h2>
+
+<p>
+    @Html.ActionLink("Criar um novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DadoPessoaFisica.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DadoPessoaFisica.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DadoPessoaFisica.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DadoPessoaFisica.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "Edit", new { id=item.UsuarioID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.UsuarioID }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.UsuarioID })
+        </td>
+    </tr>
+}
+
+</table>

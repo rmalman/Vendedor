@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Vendedor1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DadosPessoaFisica">
+    <Key>
+      <PropertyRef Name="DadosPessoaFisicaID" />
+    </Key>
+    <Property Name="DadosPessoaFisicaID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" />
+    <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+    <Property Name="CPF" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="EstadoID" />
+    </Key>
+    <Property Name="EstadoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SiglaUF" Type="nvarchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Municipio">
+    <Key>
+      <PropertyRef Name="MunicipioID" />
+    </Key>
+    <Property Name="MunicipioID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstadoID" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" />
+    <Property Name="Senha" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DadosPessoaFisicaID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Municipio_dbo_Estado_EstadoID">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="EstadoID" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="EstadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Usuario_dbo_DadosPessoaFisica_DadosPessoaFisicaID">
+    <End Role="DadosPessoaFisica" Type="Self.DadosPessoaFisica" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DadosPessoaFisica">
+        <PropertyRef Name="DadosPessoaFisicaID" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="DadosPessoaFisicaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Vendedor1ModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DadosPessoaFisica" EntityType="Self.DadosPessoaFisica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Municipio_dbo_Estado_EstadoID" Association="Self.FK_dbo_Municipio_dbo_Estado_EstadoID">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Usuario_dbo_DadosPessoaFisica_DadosPessoaFisicaID" Association="Self.FK_dbo_Usuario_dbo_DadosPessoaFisica_DadosPessoaFisicaID">
+      <End Role="DadosPessoaFisica" EntitySet="DadosPessoaFisica" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
